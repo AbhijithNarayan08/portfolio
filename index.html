@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Product Page - Wireless Noise Cancelling Headphones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Header */
+        .header {
+            background-color: #131921;
+            color: white;
+            padding: 10px 0;
+        }
+        
+        .nav-belt {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            width: 100px;
+            padding: 5px 8px;
+        }
+        
+        .logo img {
+            width: 100%;
+        }
+        
+        .nav-fill {
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        
+        .search-container {
+            display: flex;
+            height: 40px;
+        }
+        
+        .search-select {
+            background-color: #f3f3f3;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            padding: 0 5px;
+            width: 55px;
+            color: #333;
+        }
+        
+        .search-input {
+            width: 100%;
+            border: none;
+            padding: 0 10px;
+            font-size: 15px;
+        }
+        
+        .search-button {
+            background-color: #febd69;
+            border: none;
+            width: 45px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-option {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .nav-option span {
+            display: block;
+        }
+        
+        .nav-option .line-one {
+            font-size: 12px;
+            color: #ccc;
+        }
+        
+        .nav-option .line-two {
+            font-weight: bold;
+        }
+        
+        .cart {
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: #febd69;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* Sub-nav */
+        .sub-nav {
+            background-color: #232f3e;
+            color: white;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sub-nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+
+        /* Navigation Path */
+        .nav-path {
+            background-color: #fff;
+            padding: 10px 20px;
+            font-size: 12px;
+            color: #565959;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .nav-path a {
+            color: #007185;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .nav-path a:hover {
+            color: #C7511F;
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Product Images */
+        .product-images {
+            width: 40%;
+            padding: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #e7e7e7;
+            padding: 2px;
+            cursor: pointer;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnail.active {
+            border-color: #e77600;
+            box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+        }
+
+        /* Product Details */
+        .product-details {
+            width: 40%;
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: normal;
+            line-height: 32px;
+            margin-bottom: 10px;
+        }
+
+        .product-brand {
+            color: #007185;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .ratings {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: #FFA41C;
+            margin-right: 5px;
+        }
+
+        .rating-count {
+            color: #007185;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .price-container {
+            margin: 15px 0;
+        }
+
+        .list-price {
+            text-decoration: line-through;
+            color: #565959;
+            font-size: 14px;
+        }
+
+        .price {
+            color: #B12704;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .prime-logo {
+            height: 22px;
+            margin-top: 10px;
+        }
+
+        .availability {
+            font-size: 18px;
+            color: #007600;
+            margin: 10px 0;
+        }
+
+        .features-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .features-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .about-item {
+            margin: 15px 0;
+        }
+
+        .about-item h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .section-divider {
+            border-top: 1px solid #e7e7e7;
+            margin: 15px 0;
+        }
+
+        /* Buy Box */
+        .buy-box {
+            width: 20%;
+            padding: 20px;
+            border: 1px solid #e7e7e7;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+        }
+
+        .price-box {
+            font-size: 18px;
+            color: #B12704;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .delivery-info {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .in-stock {
+            color: #007600;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .quantity-dropdown {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #D5D9D9;
+            background-color: #F0F2F2;
+        }
+
+        .buy-button, .add-to-cart {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            border: none;
+        }
+
+        .buy-button {
+            background-color: #FFD814;
+            border-color: #FCD200;
+        }
+
+        .buy-button:hover {
+            background-color: #F7CA00;
+        }
+
+        .add-to-cart {
+            background-color: #FFA41C;
+            border-color: #FF8F00;
+        }
+
+        .add-to-cart:hover {
+            background-color: #FA8900;
+        }
+
+        .secure-transaction {
+            font-size: 12px;
+            color: #565959;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .secure-transaction svg {
+            margin-right: 5px;
+        }
+
+        .ships-from, .sold-by {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .return-policy {
+            font-size: 12px;
+            margin: 15px 0;
+        }
+
+        .add-to-list {
+            font-size: 12px;
+            color: #007185;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Product Description */
+        .product-description {
+            width: 100%;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .product-description h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .description-text {
+            font-size: 14px;
+            line-height: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Customer Reviews */
+        .customer-reviews {
+            width: 100%;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .customer-reviews h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .review-summary {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .overall-rating {
+            width: 250px;
+            padding-right: 30px;
+        }
+
+        .overall-stars {
+            font-size: 48px;
+            color: #FFA41C;
+            margin-bottom: 10px;
+        }
+
+        .overall-out-of {
+            font-size: 14px;
+            color: #565959;
+        }
+
+        .rating-bars {
+            flex-grow: 1;
+        }
+
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .rating-label {
+            width: 50px;
+            font-size: 13px;
+            color: #007185;
+            text-decoration: none;
+        }
+
+        .rating-progress {
+            flex-grow: 1;
+            height: 18px;
+            background-color: #f0f0f0;
+            margin: 0 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .rating-progress-fill {
+            height: 100%;
+            background-color: #FFA41C;
+        }
+
+        .rating-percent {
+            width: 50px;
+            font-size: 13px;
+            color: #565959;
+        }
+
+        .review-item {
+            border-bottom: 1px solid #e7e7e7;
+            padding: 20px 0;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: #e7e7e7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .reviewer-name {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .review-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: #565959;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 15px;
+        }
+
+        .review-helpful {
+            font-size: 12px;
+            color: #565959;
+        }
+
+        .helpful-button {
+            background: none;
+            border: 1px solid #D5D9D9;
+            border-radius: 8px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .helpful-button:hover {
+            background-color: #F0F2F2;
+        }
+
+        /* Footer */
+        .back-to-top {
+            background-color: #37475a;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        
+        .footer {
+            background-color: #232f3e;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1000px;
+            margin: 20px auto;
+            text-align: left;
+        }
+        
+        .footer-column {
+            padding: 0 10px;
+        }
+        
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-column a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-divider {
+            border-top: 1px solid #3a4553;
+            margin: 20px 0;
+        }
+        
+        .footer-logo {
+            width: 100px;
+            margin: 20px auto;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #ddd;
+            margin-top: 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .product-images {
+                width: 50%;
+            }
+            .product-details {
+                width: 50%;
+            }
+            .buy-box {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-images, .product-details {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-belt">
+            <div class="logo">
+                <a href="#">
+                    <svg height="30" width="100" fill="#fff">
+                        <path d="M35.6,26.9c-4.2,3.1-10.3,4.8-15.5,4.8c-7.3,0-14-2.7-19-7.2c-0.4-0.4,0-0.8,0.4-0.6c5.7,3.3,12.8,5.3,20.1,5.3c4.9,0,10.3-1,15.3-3.1C37.7,25.8,36.4,26.1,35.6,26.9z" />
+                        <path d="M37.3,25c-0.5-0.7-3.5-0.3-4.8-0.2c-0.4,0-0.5-0.3-0.1-0.6c2.3-1.6,6.1-1.2,6.6-0.6c0.5,0.6-0.1,4.5-2.4,6.4c-0.3,0.3-0.7,0.1-0.5-0.2C36.7,28.4,37.8,25.7,37.3,25z" />
+                        <path d="M33.6,2.9v-1c0-0.4,0.3-0.7,0.7-0.7h12.1c0.4,0,0.7,0.3,0.7,0.7v1.2c0,0.4-0.3,0.8-0.8,1.5l-6.3,9c2.3-0.1,4.8,0.3,6.8,1.5c0.5,0.3,0.6,0.7,0.6,1.1v1.5c0,0.4-0.4,0.9-0.9,0.6c-3.8-2-8.8-2.2-13,0c-0.4,0.2-0.9-0.2-0.9-0.7v-1.4c0-0.4,0-1.2,0.5-1.9l7.2-10.4h-6.3C33.9,3.5,33.6,3.2,33.6,2.9z" />
+                        <path d="M12.2,16.9c0-0.4,0-0.8,0.4-0.8h2.2c0.4,0,0.7,0.3,0.7,0.7v11.2c0,0.4-0.3,0.7-0.7,0.7h-2.1c-0.4,0-0.7-0.3-0.7-0.7L12.2,16.9L12.2,16.9z" />
+                        <path d="M12.2,11.6c0-0.4,0.3-0.8,0.8-0.8h2c0.4,0,0.7,0.4,0.7,0.8v1.7c0,0.4-0.3,0.8-0.7,0.8h-2c-0.4,0-0.8-0.4-0.8-0.8V11.6z" />
+                        <path d="M27.4,28.9h-2.1c-0.4,0-0.7-0.3-0.7-0.7v-0.3c0,0,0,0,0,0c-0.7,0.9-2,1.3-3.4,1.3c-3,0-5.7-2.3-5.7-6.9c0-4.2,2.1-7,5.6-7c1.3,0,2.7,0.5,3.4,1.4v-0.9c0-0.4,0.3-0.7,0.7-0.7h2.1c0.4,0,0.7,0.3,0.7,0.7v12.3C28.1,28.5,27.8,28.9,27.4,28.9z M20.9,24.5c0,1.8,1.1,3.2,2.9,3.2c1.8,0,3-1.4,3-3.2c0-1.9-1.2-3.3-3-3.3C22,21.3,20.9,22.6,20.9,24.5z" />
+                        <path d="M72.8,28.9h-2.1c-0.4,0-0.7-0.3-0.7-0.7v-0.3c0,0,0,0,0,0c-0.7,0.9-2,1.3-3.4,1.3c-3,0-5.7-2.3-5.7-6.9c0-4.2,2.1-7,5.6-7c1.3,0,2.7,0.5,3.4,1.4v-0.9c0-0.4,0.3-0.7,0.7-0.7h2.1c0.4,0,0.7,0.3,0.7,0.7v12.3C73.5,28.5,73.2,28.9,72.8,28.9z M66.4,24.5c0,1.8,1.1,3.2,2.9,3.2c1.8,0,3-1.4,3-3.2c0-1.9-1.2-3.3-3-3.3C67.5,21.3,66.4,22.6,66.4,24.5z" />
+                        <path d="M60.1,28.9h-2.1c-0.4,0-0.7-0.3-0.7-0.7V9.7c0-0.4,0.3-0.7,0.7-0.7h2.1c0.4,0,0.7,0.3,0.7,0.7v18.5C60.8,28.5,60.5,28.9,60.1,28.9z" />
+                        <path d="M52.1,22.1v0.7c0,0.4-0.3,0.7-0.7,0.7h-6.9c0.1,1.6,1.3,2.9,3.2,2.9c1,0,1.8-0.3,2.4-0.8c0.3-0.3,0.7-0.3,1-0.1l1.1,0.9c0.3,0.3,0.4,0.7,0.1,1c-1.1,1.2-2.8,1.8-4.7,1.8c-3.8,0-6.1-2.7-6.1-6.9c0-4.2,2.3-7,5.8-7c3.4,0,5,2.7,5,6.8C52.2,21.8,52.1,22.1,52.1,22.1z M47.9,18.6c-1.6,0-2.7,1.1-2.9,2.9h5.4C50.4,19.9,49.5,18.6,47.9,18.6z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="delivery-address">
+                <div class="nav-option">
+                    <span class="line-one">Deliver to</span>
+                    <span class="line-two">Select location</span>
+                </div>
+            </div>
+            <div class="nav-fill">
+                <div class="search-container">
+                    <select class="search-select">
+                        <option>All</option>
+                    </select>
+                    <input type="text" class="search-input" placeholder="Search Amazon">
+                    <button class="search-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-option">
+                    <span class="line-one">Hello, sign in</span>
+                    <span class="line-two">Account & Lists</span>
+                </div>
+                <div class="nav-option">
+                    <span class="line-one">Returns</span>
+                    <span class="line-two">& Orders</span>
+                </div>
+                <div class="cart">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5">
+                        <path d="M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                        <path d="M20 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Sub Navigation -->
+    <div class="sub-nav">
+        <a href="#">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            All
+        </a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Customer Service</a>
+        <a href="#">Registry</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Sell</a>
+    </div>
+
+    <!-- Navigation Path -->
+    <div class="nav-path">
+        Electronics › Headphones & Earbuds › Over-Ear Headphones › <strong>Wireless Noise Cancelling Headphones</strong>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Product Images -->
+        <div class="product-images">
+            <div class="main-image">
+                <img src="/api/placeholder/500/500" alt="Wireless Noise Cancelling Headphones - Main Image">
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail active">
+                    <img src="/api/placeholder/40/40" alt="Thumbnail 1">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/40/40" alt="Thumbnail 2">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/40/40" alt="Thumbnail 3">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/40/40" alt="Thumbnail 4">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/40/40" alt="Thumbnail 5">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/40/40" alt="Thumbnail 6">
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+            <h1 class="product-title">Premium Wireless Noise Cancelling Headphones with Hi-Fi Sound, 40H Playtime, Ultra-Comfort Design for Travel, Work and Home</h1>
+            <div class="product-brand">Visit the SonicWave Store</div>
+            <div class="ratings">
+                <div class="stars">★★★★★</div>
+                <div class="rating-count">4.6 out of 5 stars (2,845 ratings)</div>
+            </div>
+            <div class="price-container">
+                <div class="list-price">List Price: $199.99</div>
+                <div class="price">$149.99</div>
+                <div>Save: $50.00 (25%)</div>
+            </div>
+            <div>
+                <img class="prime-logo" src="/api/placeholder/50/20" alt="Amazon Prime">
+                <span>FREE delivery: <strong>Tomorrow</strong></span>
+            </div>
+            <div class="availability">In Stock</div>
+            <div class="features-list">
+                <h3>About this item:</h3>
+                <ul>
+                    <li><strong>Industry-Leading Noise Cancellation:</strong> Advanced ANC technology that adjusts to your environment, blocking out unwanted noise for immersive listening.</li>
+                    <li><strong>Premium Sound Quality:</strong> 40mm high-precision drivers deliver deep bass and crystal clear highs for an exceptional audio experience.</li>
+                    <li><strong>40-Hour Battery Life:</strong> Enjoy up to 40 hours of continuous playtime with ANC on, and quick charge for 5 hours of playback in just 10 minutes.</li>
+                    <li><strong>Ultimate Comfort:</strong> Memory foam ear cushions and adjustable headband ensure a perfect fit for extended listening sessions.</li>
+                    <li><strong>Voice Assistant Compatible:</strong> One-touch access to your preferred voice assistant - works with Siri, Google Assistant, and Alexa.</li>
+                    <li><strong>Bluetooth 5.2 Technology:</strong> Stable connection up to 33ft with seamless device switching.</li>
+                </ul>
+            </div>
+            <div class="about-item">
+                <h3>Available colors:</h3>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <div style="width: 30px; height: 30px; background-color: #000; border: 1px solid #e7e7e7; border-radius: 50%;"></div>
+                    <div style="width: 30px; height: 30px; background-color: #FFFFFF; border: 1px solid #e7e7e7; border-radius: 50%;"></div>
+                    <div style="width: 30px; height: 30px; background-color: #0071C5; border: 1px solid #e7e7e7; border-radius
